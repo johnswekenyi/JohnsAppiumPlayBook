@@ -2,11 +2,13 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 public class SwipeDemo extends BaseClass {
     AndroidDriver driver = Capabilities();
 
     public SwipeDemo() throws MalformedURLException {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         TouchAction t = new TouchAction(driver);
         //Click views
         driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
