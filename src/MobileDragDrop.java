@@ -5,9 +5,10 @@ import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 public class MobileDragDrop extends BaseClass {
-    AndroidDriver driver = Capabilities();
+    AndroidDriver driver;
 
     public MobileDragDrop() throws MalformedURLException {
+        driver = Capabilities();
         driver.manage().timeouts().implicitlyWait( 10, TimeUnit.SECONDS );
         //Click views
         driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
@@ -18,5 +19,9 @@ public class MobileDragDrop extends BaseClass {
         // textual conversion to the EditText.
         t.longPress(driver.findElementsByClassName("android.view.View").get(0)).moveTo(driver.findElementsByClassName
                 ("android.view.View").get(2)).release().perform();
+    }
+
+    private AndroidDriver Capabilities() {
+        return driver;
     }
 }

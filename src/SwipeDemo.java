@@ -5,9 +5,10 @@ import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 public class SwipeDemo extends BaseClass {
-    AndroidDriver driver = Capabilities();
+    AndroidDriver driver;
 
     public SwipeDemo() throws MalformedURLException {
+        driver = Capabilities();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         TouchAction t = new TouchAction(driver);
         //Click views
@@ -21,5 +22,9 @@ public class SwipeDemo extends BaseClass {
         //Hold on 15 for 2 secs, move it to 45 then release
         t.press(driver.findElementByXPath("//*[content-desc='15']")).waitAction(2000).moveTo(driver
                 .findElementByXPath("//*[content-desc='45']")).release().perform();
+    }
+
+    private AndroidDriver Capabilities() {
+        return driver;
     }
 }
