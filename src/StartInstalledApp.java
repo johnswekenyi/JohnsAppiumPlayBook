@@ -11,7 +11,7 @@ import java.net.URL;
  * Run an app installed on phone without using apk
  */
 public class StartInstalledApp extends BaseClass{
-    AndroidDriver driver = Capabilities();
+    AndroidDriver driver;
     public StartInstalledApp() throws MalformedURLException {
         File appDir = new File("src");
         DesiredCapabilities cap = new DesiredCapabilities();
@@ -23,5 +23,10 @@ public class StartInstalledApp extends BaseClass{
         //App activity name to launch. App has different activities.
         cap.setCapability(MobileCapabilityType.APP_ACTIVITY,"com.mventus.selfcare.safaricom.HomeActivity");
         AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),cap);
+        this.driver = Capabilities();
+    }
+
+    private AndroidDriver Capabilities() {
+        return driver;
     }
 }

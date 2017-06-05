@@ -1,13 +1,13 @@
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 public class MiscellaneousMethods extends BaseClass {
-    AndroidDriver driver = Capabilities();
+    AndroidDriver driver;
 
     public MiscellaneousMethods() throws MalformedURLException {
+        driver = Capabilities();
         driver.manage().timeouts().implicitlyWait( 10, TimeUnit.SECONDS );
         //FInd current activity and print it out
         System.out.println(driver.currentActivity());
@@ -22,9 +22,13 @@ public class MiscellaneousMethods extends BaseClass {
         //Click views
         driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
         //Click mobile phone back button
-        driver.pressKeyCode(AndroidKeyCode.BACK);
+        //driver.pressKeyCode(AndroidKeyCode.BACK);
         //Click on home button
         driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
-        driver.pressKeyCode(AndroidKeyCode.HOME);
+//        driver.pressKeyCode(AndroidKeyCode.HOME);
+    }
+
+    private AndroidDriver Capabilities() {
+        return driver;
     }
 }

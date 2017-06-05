@@ -7,6 +7,10 @@ public class BasicsTestClass extends BaseClass {
 
     AndroidDriver driver = Capabilities();
 
+    private AndroidDriver Capabilities() {
+        return driver;
+    }
+
     public BasicsTestClass() throws MalformedURLException {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -28,6 +32,5 @@ public class BasicsTestClass extends BaseClass {
         //Click Ok button. Here we get all the elements identified by the class name and click the one we want. We
         // use index from 0,1,2....
         driver.findElementsByClassName("android.widget.Button").get(1).click();
-
     }
 }

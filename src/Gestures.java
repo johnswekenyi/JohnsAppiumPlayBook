@@ -5,10 +5,11 @@ import java.net.MalformedURLException;
 
 public class Gestures extends BaseClass {
 
-    AndroidDriver driver = Capabilities();
+    AndroidDriver driver;
 
     public Gestures() throws MalformedURLException {
         //Click views
+        driver = Capabilities();
         driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
 
         //Tap on an element in mobile apps open expandable list. TouchAction works with one action while touchactions
@@ -24,5 +25,9 @@ public class Gestures extends BaseClass {
                 .release().perform();
         //validate the text on the pop up and print in console
         System.out.println(driver.findElementById("android:id/alertTitle").getText());
+    }
+
+    private AndroidDriver Capabilities() {
+        return driver;
     }
 }
